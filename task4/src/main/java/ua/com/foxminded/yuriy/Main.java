@@ -9,9 +9,11 @@ public class Main {
 
 		CharCollection charCount = new CharCollection();
 		String str = "Nice!!!";
-		Map<Character, Integer> letters = charCount.countUniqueCharacters(str);
+		String str2 = "Nice!!!";
+		Map<String, Integer> letters = charCount.countUniqueCharacters(str);
 		System.out.println(charCount.printUniqueCharacter(letters));
-		
+		Map<String, Integer> letters2 = charCount.countUniqueCharacters(str2);
+		System.out.println(charCount.printUniqueCharacter(letters2));
 		
 		
 

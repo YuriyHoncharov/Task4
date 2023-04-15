@@ -10,7 +10,7 @@ import javax.xml.stream.events.Characters;
 
 public class CharCollection {
 
-	private Map<String, Integer> cache = new LinkedHashMap<>();
+	private Map<String, Map<String, Integer>> cache = new LinkedHashMap<>();
 	private static final String LETTER_PRINT = "CHARACTER : ";
 	private static final String AMOUNT_PRINT = " AMOUNT : ";
 	private static final String QUOTE = "\"";
@@ -19,35 +19,42 @@ public class CharCollection {
 
 	// Creating Map as Unique Character Counter
 
-	public Map<Character, Integer> countUniqueCharacters(String input) {
-		
+	public Map<String, Integer> countUniqueCharacters(String input) {
+
 		if (input == null) {
 			return null;
 		}
-
 		input = input.toLowerCase();
-		Map<Character, Integer> charCount = new LinkedHashMap<>();
+
+		if (cache.containsKey(input)) {
+			return cache.get(input);
+		}
+
+		Map<String, Integer> charCount = new LinkedHashMap<>();
 
 		for (int i = 0; i < input.length(); i++) {
-			char c = input.charAt(i);
+			char x = input.charAt(i);
+			String c = String.valueOf(x);
 			if (charCount.containsKey(c)) {
 				charCount.put(c, charCount.getOrDefault(c, 0) + 1);
 			} else {
 				charCount.put(c, 1);
 			}
 		}
+
+		cache.put(input, charCount);
 		return charCount;
 	}
 
 	// Printing the result of counting
 
-	public String printUniqueCharacter(Map<Character, Integer> uniqueCharactersList) {
-		
+	public String printUniqueCharacter(Map<String, Integer> uniqueCharactersList) {
+
 		if (uniqueCharactersList == null) {
 			return null;
 		}
-		
-		if (uniqueCharactersList.isEmpty()){
+
+		if (uniqueCharactersList.isEmpty()) {
 			return MAP_IS_EMPTY;
 		}
 
