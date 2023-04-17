@@ -8,12 +8,8 @@ public class Main {
 	public static void main(String[] args) {
 
 		CharCollection charCount = new CharCollection();
-		String str = "Nice!!!";
-		Map<Character, Integer> letters = charCount.countUniqueCharacters(str);
+		String str = "Hello World!";
+		Map<String, Integer> letters = charCount.countUniqueCharacters(str);
 		System.out.println(charCount.printUniqueCharacter(letters));
-		
-		
-		
-
 	}
 }
