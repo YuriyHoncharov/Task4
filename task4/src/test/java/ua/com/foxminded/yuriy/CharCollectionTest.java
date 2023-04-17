@@ -28,6 +28,21 @@ class CharCollectionTest {
 		mapForTest.put("!", 1);
 		String testString = "Hello!";
 		assertEquals(mapForTest, test.countUniqueCharacters(testString));
+	}
+		
+		@Test
+		void countUniqueCharacters_stringIsCached_returnMapFromCache() {
+			Map <String, Integer> mapForTest = new LinkedHashMap<>();
+			String testString = "Hello!";
+			mapForTest = test.countUniqueCharacters(testString);
+			Map <String, Integer> mapForTestCache = new LinkedHashMap<>();
+			mapForTestCache.put("h", 1);
+			mapForTestCache.put("e", 1);
+			mapForTestCache.put("l", 2);
+			mapForTestCache.put("o", 1);
+			mapForTestCache.put("!", 1);
+			String testStringCache = "Hello!";
+			assertEquals(mapForTestCache, test.countUniqueCharacters(testStringCache));
 				
 	}
 	@Test
@@ -56,6 +71,4 @@ class CharCollectionTest {
 		Map <String, Integer> mapForTest = test.countUniqueCharacters(testString);
 		assertEquals(result, test.printUniqueCharacter(mapForTest));
 	}
-	
-	
 }
