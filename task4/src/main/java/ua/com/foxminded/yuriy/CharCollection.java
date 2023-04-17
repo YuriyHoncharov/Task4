@@ -1,12 +1,7 @@
 package ua.com.foxminded.yuriy;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
-
-import javax.xml.stream.events.Characters;
 
 public class CharCollection {
 
@@ -17,7 +12,6 @@ public class CharCollection {
 	private static final String NEW_LINE = "\n";
 	private static final String MAP_IS_EMPTY = "This HashMap is Empty.";
 	private static final String TITLE_PRINT = "Unique characters in the String: ";
-	private static final StringBuilder resultSource = new StringBuilder();
 
 	// Creating Map as Unique Character Counter
 
@@ -26,9 +20,9 @@ public class CharCollection {
 		if (input == null) {
 			return null;
 		}
-		
+
 		input = input.toLowerCase();
-		
+
 		if (cache.containsKey(input)) {
 			System.out.println("String has been already counted, returning result from cache...");
 			return cache.get(input);
@@ -45,7 +39,6 @@ public class CharCollection {
 				charCount.put(c, 1);
 			}
 		}
-
 		cache.put(input, charCount);
 		return charCount;
 	}
@@ -57,7 +50,6 @@ public class CharCollection {
 		if (uniqueCharactersList == null) {
 			return null;
 		}
-
 		if (uniqueCharactersList.isEmpty()) {
 			return MAP_IS_EMPTY;
 		}
@@ -67,7 +59,6 @@ public class CharCollection {
 		result.append(TITLE_PRINT).append(uniqueAmount).append(NEW_LINE);
 		uniqueCharactersList.forEach((key, value) -> result.append(LETTER_PRINT).append(QUOTE).append(key).append(QUOTE)
 				.append(AMOUNT_PRINT).append(value).append(NEW_LINE));
-
 		return result.toString();
 	}
 }
